@@ -1,7 +1,7 @@
 Codejump(https://code-jump.com/) という学習サイトで模写コーディング、デザインカンプからのコーディングを自主課題として練習したものをまとめたリポジトリです。  
 
 ・PHOTO BOOK 
-<a href="https://code-jump.com/demo/html/photo/" target="_blank">デモサイト</a>
+<a href="https://code-jump.com/demo/html/photo/" target="_blank" rel="noopener noreferrer">デモサイト</a>
 デモサイト：https://code-jump.com/demo/html/photo/  
 模写コーディング：https://bokuno-code.github.io/mosha-coding/PHOTO%20BOOK/  
 作成時間：約1時間  

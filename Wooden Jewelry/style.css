@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* 全部にボーダー付けたらわかりやすくていいね */
+* {
+    box-sizing: border-box;
+    /* border: solid 1px black; */
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #2d2d2d;
+}
+
+/* font-family: 第一候補、第二候補;らしい */
+body {
+    color: #2d2d2d;
+    font-family: 'Crimson Text', serif;
+}
+
+/* border-boxに設定したため幅100%、
+パディング左右に5%ずつにして本体幅90%としている
+-------------------------
+↑意味不明すぎて修正 */
+.container {
+    /* width: 100%;
+    padding: 0 5%; */
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 1000pxまでは95%で、1000px超えたらそこで止まる←天才 
+今回セクション別で同じだったためまとめて書いたが、
+レスポンシブでcolumn-reverse使う際に結局別々に書くことになり
+結果正しく動いたが、倫理的に良いかは不明*/
+.wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper img {
+    width: 50%;
+}
+
+.content {
+    width: 50%;
+    padding: 0 7%;
+}
+
+.section-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 17px;
+}
+
+.section-title {
+    margin-bottom: 31px;
+}
+/* --------------------------
+mainvisual
+-------------------------- */
+
+/* デザインカンプから勘で設定 */
+#mainvisual {
+    margin-top: calc(5vw - 10px);
+}
+
+/* ------------------
+header
+------------------ */
+
+#header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 65px;
+}
+
+
+.site-title {
+    width: 110px;
+    line-height:1;
+}
+
+.site-title a {
+    display: block;
+}
+
+#header ul {
+    display: flex;
+    gap: 33px;
+    /* font-size: 0.875rem; */
+}
+
+#header li {
+    font-size: 0.875rem;
+}
+
+/* -------------------------------
+concept
+------------------------------- */
+
+#concept {
+    margin-bottom: 60px;
+}
+
+/* --------------------------
+work
+-------------------------- */
+
+#work {
+    margin-bottom: 84px;
+}
+
+/* ------------------------
+footer
+----------------------- */
+
+#footer p {
+    font-size: 0.875rem;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 23px;
+}
+
+/* -----------------------
+responsive
+----------------------- */
+@media screen and (max-width: 767px) {
+    #mainvisual {
+        width: 100%;
+        margin: 0;
+    }
+
+    #header {
+        width: 95%;
+    }
+    
+    #concept  {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    #work {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 13px;
+    }
+
+    .wrapper img {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+        padding: 0;
+    }
+
+    .section-subtitle {
+        font-size: 1.25rem;
+    }
+}

@@ -1,0 +1,364 @@
+@charset "UTF-8";
+
+html {
+    font-size: 100%;
+}
+
+* {
+    /* outline: solid 1px black; */
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+body {
+    /* デザインカンプによると12pxが多いため。 */
+    font-size: 0.75rem;
+    color: #333;
+    /* フッターを画面下に配置するため */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* これで余白がメインで埋まるらしい */
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    opacity: 0.7;
+    transition: all 0.5s;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: bottom;
+    width: 100%;
+}
+
+/* 共通項 */
+.container {
+    max-width: 1360px;
+    width: 100%;
+    padding: 0 40px;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 0.875rem;
+    padding: 30px 0;
+}
+
+/* header */
+#header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* ↓headerを固定 */
+    position: fixed;
+    z-index: 10;
+    background-color: white;
+}
+
+.site-title {
+    display: block;
+    width: 180px;
+}
+
+#nav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    top: 35px;
+    left: 50px;
+    z-index: 20; /* headerたちより上に */
+    visibility: hidden;
+    transform: translateX(-200%);
+    transition: all 0.5s;
+}
+
+.open #nav {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+#nav a {
+    color: white;
+    font-size: 0.875rem;
+}
+
+.toggle-btn {
+    width: 30px;
+    height: 30px;
+    z-index: 20;
+}
+
+.toggle-btn span {
+    display: block;
+    background-color: black;
+    width: 30px;
+    height: 2px;
+    transition: all 0.5s;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+}
+
+.toggle-btn span:nth-child(1) {
+    transform: translateY(-4px);
+}
+
+.toggle-btn span:nth-child(2) {
+    transform: translateY(4px);
+}
+
+.open .toggle-btn span {
+    background-color: white;
+}
+
+.open .toggle-btn span:nth-child(1) {
+    transform: translateY(0) rotate(-45deg);
+}
+
+.open .toggle-btn span:nth-child(2) {
+    transform: translateY(0) rotate(45deg);
+}
+
+#mask {
+    position: fixed;
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.open #mask {
+    visibility: visible;
+    opacity: 0.8;
+}
+
+/* top */
+#top {
+    padding-top: 80px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+}
+
+.card {
+    display: block;
+}
+
+.card img {
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    opacity: 0.7;
+    transition: all 0.5s;
+}
+
+.view-more {
+    display: block;
+    width: 70px;
+    margin: 35px auto 40px;
+    text-align: center;
+}
+
+/* footer */
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    /* これでなぜか下に固定される */
+    align-self: auto;
+}
+
+#footer ul {
+    display: flex;
+    gap: 30px;
+}
+
+#footer p {
+    font-size: 0.625rem;
+}
+
+/* products */
+#products {
+    padding-top: 80px;
+}
+
+.pagination {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin: 50px 0 130px;
+}
+
+/* detail */
+#detail {
+    padding-top: 80px;
+}
+
+.content {
+    display: flex;
+    gap: 60px;
+}
+
+.content img {
+    width: 400px;
+}
+
+.text {
+    width: 330px;
+}
+
+.text h3 {
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+}
+
+.text p {
+    margin-bottom: 30px;
+}
+
+.text dl {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text dt {
+    width: 30%;
+}
+
+.text dd {
+    width: 70%;
+}
+
+.back {
+    display: block;
+    width: 100px;
+    margin: 70px auto 130px;
+    text-align: center;
+}
+
+/* about */
+#about {
+    padding-top: 80px;
+    margin-bottom: 200px;
+}
+
+#about h3 {
+    font-size: 0.875rem;
+    width: 600px;
+    margin-bottom: 40px;
+    line-height: 26px;
+}
+
+/* company */
+#company {
+    padding-top: 80px;
+}
+
+#company dl {
+    display: grid;
+    /* dtが30%、残りをdd */
+    grid-template-columns: 30% 1fr; 
+    width: 600px;
+    font-size: 0.875rem;
+}
+
+#company dt, #company dd {
+    padding: 20px 10px;
+    border-top: solid 1px #DCDBDB;
+}
+
+#company dt:nth-child(1), #company dd:nth-child(2) {
+    border-top: none;
+}
+
+.map {
+    filter: grayscale(1);
+    max-width: 600px;
+    margin: 20px 0 180px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 300px;
+}
+
+/* respnsive */
+@media screen and (max-width: 900px) {
+    /* top */
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px;
+    }
+
+    .view-more {
+        margin: 50px auto 100px;
+    }
+
+    /* footer */
+    #footer {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+
+    /* detail */
+    .content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .content img, .text {
+        width: 100%;
+    }
+
+    .back {
+        margin-bottom: 100px;
+    }
+
+    /* about */
+    #about h3 {
+        width: 100%;
+    }
+
+    /*company  */
+    #company dl {
+        width: 100%;
+        grid-template-columns: 1fr;
+    } 
+
+    #company dt {
+        padding-bottom: 5px;
+    }
+
+    #company dd {
+        padding-top: 5px;
+        border-top: none;
+    }
+}   

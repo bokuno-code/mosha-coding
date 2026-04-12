@@ -1,0 +1,718 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "游ゴシック体", "YuGothic", "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+  color: #333;
+  letter-spacing: 0.1rem;
+}
+  
+* {
+  outline: solid 1px black;
+  box-sizing: border-box;
+}  
+
+img {
+  vertical-align: bottom;
+  width: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  text-align: center;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  width: 100px;
+  border-bottom: solid 3px #333;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto; 
+}
+
+.container {
+  width: 860px;
+  margin: 0 auto;
+}
+
+
+/* =========================
+header
+=============================== */
+#header {
+  height: 100px;
+}
+
+.site-title {
+  width: 150px;
+  padding: 40px 0 0 50px;
+}
+
+#navi {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  font-weight: bold;
+  background-color: #FF2A2A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+#navi img {
+  width: 100px;
+  margin: 40px 0 0 50px;
+  align-self: start;
+}
+
+#navi ul {
+  display: grid;
+  gap: 25px;
+  margin: 30px 0 40px;
+}
+
+#navi .btn {
+  position: relative;
+  width: 250px;
+  line-height: 50px;
+  border: solid 1px #fff;
+  transition: all 0.5s ease-in-out;
+}
+
+#navi .btn:hover {
+  background-color: #fff;
+  color: #FF2A2A;
+}
+
+#navi .btn::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  top: 6px;
+  left: 6px;
+  border-bottom: solid 1px #fff;
+  border-right: solid 1px #fff;
+}
+
+.open #navi {
+  visibility: visible;
+  opacity: 1;
+}
+
+.toggle-btn {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background-color: #FF2A2A;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.toggle-btn:hover {
+  opacity: 0.8;
+}
+
+.toggle-btn span,
+.toggle-btn span::before,
+.toggle-btn span::after {
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: #fff;
+  position: absolute;
+  transition: all 0.5s ease;
+}
+
+.toggle-btn span {
+  left: 25px;
+  /* 棒の厚み2pxを考慮(50-1px) */
+  top: calc(50% - 1px);
+}
+
+.toggle-btn span::before {
+  content: "";
+  top: -14px;
+}
+
+
+.toggle-btn span::after {
+  content: "";
+  top: 14px;
+}
+
+.open .toggle-btn span {
+  transform: rotate(45deg);
+}
+
+.open .toggle-btn span::before {
+  top: 0;
+  transform: rotate(-90deg);
+}
+
+.open .toggle-btn span::after {
+  top: 0;
+}
+
+/* =====================
+mainvisual
+======================= */
+#mainvisual {
+  position: relative;
+  height: 840px;
+}
+
+#mainvisual .text {
+  position: absolute;
+  top: 280px;
+  left: 135px;
+  z-index: 5;
+}
+
+.main-title {
+  font-size: 2.875rem;
+  /* 背景に埋もれないように影 */
+  text-shadow: 0 4px 6px #fff;
+}
+
+#mainvisual .text a {
+  background-color: #FF2A2A;
+  box-shadow: 0 6px 0 #7A051C;
+  border-radius: 10px;
+  display: block;
+  width: 480px;
+  line-height: 60px;
+  font-size: 1.5rem;
+  text-align: center;
+  /* 矢印用 */
+  position: relative;
+  transition: all 0.5s;
+}
+
+/* ボーダーで矢印作成←誰が思いつくん */
+#mainvisual .text a::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border-top: solid 3px #fff;
+  border-right: solid 3px #fff;
+  position: absolute;
+  /* 自身の半分を引く */
+  top: calc(50% - 8px);
+  right: 30px;
+  transform: rotate(45deg);
+}
+
+#mainvisual .text a:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.fade li {
+  position: absolute;
+  width: 75%;
+  top: 0;
+  right: 0;
+  /* 初期状態非表示 */
+  opacity: 0;
+  /* アニメーションを実行
+  fade：@keyframes fadeを実行
+  15s：処理を15秒かけて実行
+  infinite：処理を無限に繰り返す */
+  animation: fade 15s infinite;
+}
+
+.fade li:nth-child(1) {
+  animation-delay: 0s;
+}
+.fade li:nth-child(2) {
+  animation-delay: 5s;
+}
+.fade li:nth-child(3) {
+  animation-delay: 10s;
+}
+
+.fade img {
+  height: 720px;
+  object-fit: cover;
+}
+
+.fade li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: inset 0 0 20px 20px #fff;
+}
+
+@keyframes fade {
+  0% {opacity: 0;}
+  15% {opacity: 1;}
+  30% {opacity: 1;}
+  45% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+/* ===================
+reason section
+===================== */
+#reason {
+  margin-bottom: 120px;
+}
+
+.red {
+  background-color: #FF2A2A;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  /* リロードした際にサイト全体がずれるのを防ぐ */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#reason .content {
+  background-color: #fff;
+  height: 200px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+#reason .content:nth-of-type(1) {
+  border-radius: 0 20px 20px 0;
+  align-self: start;
+  transform: translateX(-50%);
+}
+#reason .content:nth-of-type(2) {
+  border-radius: 20px 0 0 20px;
+  align-self: flex-end;
+  transform: translateX(50%);
+}
+
+#reason .content.is-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+#reason .content img {
+  height: 60px;
+  width: auto;
+}
+
+#reason .content h4 {
+  color: #FF2A2A;
+  font-size: 1.75rem;
+}
+
+#reason .content p {
+  font-size: 1.125rem;
+}
+
+/* ===================================
+voice section
+========================================= */
+#voice {
+  margin-bottom: 120px;
+}
+
+#voice .content {
+  display: flex;
+  /* 要素の高さが伸びないようにする */
+    align-items: start;
+  gap: 25px;
+  transform: scale(0.1);
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+#voice .content.is-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+#voice .profile img {
+  width: 120px;
+  height: 120px;
+  background-color: #CCCCCC;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+#voice .profile p {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+#voice .text {
+  background-color: #E9F1FB;
+  padding: 20px;
+  width: 60%;
+  border-radius: 15px;
+  position: relative;
+}
+
+#voice .content:nth-of-type(2) {
+  justify-content: flex-end;
+  margin: 63px 0;
+}
+
+#voice .text::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #E9F1FB;
+  position: absolute;
+  top: 80px;
+  transform: rotate(45deg);
+
+}
+
+#voice .content:nth-of-type(1) .text::after,
+#voice .content:nth-of-type(3) .text::after {
+  left: -10px;
+}
+
+#voice .content:nth-of-type(2) .text::after {
+  right: -10px;
+}
+
+/* ==============================
+outline section
+================================= */
+#outline {
+    background: url("./img/bg.gif") repeat; 
+    /* linear:一定変化 */
+    animation: fall 10s infinite linear;
+    padding: 60px 0;
+    margin-bottom: 120px;
+  }
+
+  @keyframes fall {
+    0% {background-position: 0 0;}
+    /* 赤い円の間隔が700px */
+    100% {background-position: -700px 700px;}
+  }
+
+#outline .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 60px;
+  row-gap: 32px;
+}
+
+#outline .card {
+  border-radius: 20px;
+  padding: 60px;
+}
+
+#outline .card h4 {
+  font-size: 1.75rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+#outline .card h5 {
+  font-size: 1.125rem;
+  margin-bottom: 33px;
+  text-align: center;
+}
+
+/* ==========================
+entry section
+=========================== */
+#entry {
+  margin-bottom: 120px;
+  text-align: center;
+}
+
+#entry h3 {
+  font-size: 2rem;
+  margin-bottom: 10px; 
+}
+
+#entry p {
+  font-weight: 300;
+  font-size: 1.125rem;
+  margin-bottom: 43px;
+}
+
+#entry a {
+  background-color: #FF2A2A;
+  border: solid 3px #FF2A2A;
+  border-radius: 40px;
+  font-size: 1.75rem;
+  font-weight: bold;
+  padding: 20px 0;
+  display: block;
+  transition: all 0.5s;
+}
+
+#entry a:hover {
+  background-color: #fff;
+  color: #FF2A2A;
+}
+
+/* =========================
+footer section
+======================== */
+#footer {
+  background-color: #E8E8E8;
+}
+
+#footer .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 60px 0;
+}
+
+#footer .list h4 {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+#footer .list a {
+  padding-left: 15px;
+  color: #333;
+  transition: all 0.3s;
+}
+
+#footer .list a:hover {
+  opacity: 0.7;
+}
+
+#footer p {
+  font-size: 0.75rem;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+/* ========================
+responsive
+======================== */
+@media screen and (max-width: 900px) {
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 60px;
+  }
+
+  .section-title::after {
+    width: 80px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+  }
+  /* ==============
+  header
+  ================ */
+  .site-title {
+    width: 125px;
+    padding: 25px 0 0 25px;
+  }
+
+  #navi img {
+    margin: 25px 0 0 25px;
+  }
+
+  .toggle-btn {
+    width: 75px;
+    height: 75px;
+  }
+
+  .toggle-btn span,
+  .toggle-btn span::before,
+  .toggle-btn span::after {
+    width: 35px;
+  }
+
+  .toggle-btn span {
+    left: 20px;
+  }
+
+  .toggle-btn span::before {
+    top: -11px;
+  }
+
+  .toggle-btn span::after {
+    top: 11px;
+  }
+
+  /* =======================
+  mainvisual
+  ========================== */
+  #mainvisual {
+    height: 550px;
+  }
+
+  .main-title {
+    font-size: 1.75rem;
+  }
+
+  #mainvisual .text {
+    top: 300px;
+    left: 25px;
+  }
+
+  #mainvisual .text a {
+    width: calc(100vw - 50px);
+  }
+
+  .fade li {
+    width: 100%;
+    height: 300px;
+  }
+
+  .fade li img {
+    height: 300px;
+  }
+  /* ===================
+  reason section
+  ====================== */
+  #reason {
+    margin-bottom: 80px;
+  }
+
+  .red {
+    height: 360px;
+  }
+
+  #reason .content {
+    width: calc(100% - 16px);
+    height: 120px;
+  }
+
+  #reason .text h4 {
+    font-size: 1.5rem;
+  }
+
+  /* ===============================
+  voice section
+  ================================= */
+  #voice {
+    margin-bottom: 80px;
+  }
+
+  #voice .content {
+    flex-direction: column-reverse;
+    gap: 30px;
+    align-items: center;
+  }
+
+  #voice .content:nth-of-type(2) {
+    flex-direction: column;
+    margin: 43px 0;
+  }
+
+  #voice .text {
+    width: 100%;
+  }
+
+  #voice .content:nth-of-type(1) .text::after,
+  #voice .content:nth-of-type(2) .text::after,
+  #voice .content:nth-of-type(3) .text::after {
+    top: calc(100% - 10px);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  /* =========================
+  outline section
+  ========================= */
+  #outline {
+    margin-bottom: 80px;
+  }
+
+  #outline .container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  #outline .card {
+    padding: 32px;
+  }
+
+  #outline .card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 23px;
+  }
+
+  #outline .card h5 {
+    font-size: 1rem;
+    margin-bottom: 33px;
+  }
+
+  /* ====================
+  entry section
+  ===================== */
+  #entry {
+    margin-bottom: 80px;
+  }
+
+  #entry h3 {
+    font-size: 1.5rem;
+  }
+
+  #entry p {
+    font-size: 1rem;
+  }
+
+  #entry {
+    font-size: 1.5rem;
+  }
+
+  /* ====================
+  footer section
+  ===================== */
+  #footer .container {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 35px;
+  }
+
+  #footer .list h4 {
+    font-size: 0.9375rem;
+  }
+
+  #footer .list a {
+    font-size: 0.75rem;
+  }
+
+  #footer p {
+    font-size: 0.625rem;
+  }
+}
